@@ -1,39 +1,22 @@
 <template>
-  <div id="app" class="is-component">
-    <el-container>
-      <el-header class="header">
-        <Header />
-      </el-header>
-      <el-scrollbar style="padding-top: 60px;">
-        <el-container class="page-container page-component">
-          <ArticleList />
-          <!-- <el-aside width="240px">
-            <el-scrollbar class="page-component__nav">
-              <LeftNav />
-            </el-scrollbar>
-          </el-aside>
-          <el-main>
-              <el-scrollbar class="page-component__content">
-              <p v-for="(item, index) in 200" :key="index">{{index}} 这里是一些文本。</p>
-              </el-scrollbar>
-          </el-main> -->
-        </el-container>
-      </el-scrollbar>
-    </el-container>
+  <div id="app">
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
-import LeftNav from './components/LeftNav.vue'
-import ArticleList from './views/ArticleList.vue'
+import ArticleList from "./views/ArticleList.vue"
+import RightNav from "./components/RightNav.vue"
 
 export default {
   name: 'app',
   components: {
+    RightNav,
+    ArticleList,
     Header,
-    LeftNav,
-    ArticleList
   }
 }
 </script>
@@ -43,8 +26,9 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
   color: #2c3e50;
-  height: 100%;
+  margin-top: 60px;
+  min-width: 1140px;
 }
-
 </style>

@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Main from './views/Main.vue'
 import Home from './views/Home.vue'
+import ArticleList from './views/ArticleList.vue'
+import ArticleContent from './views/ArticleContent.vue'
 
 Vue.use(Router)
 
@@ -8,8 +11,21 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'main',
+      component: Main,
+      redirect: 'home',
+      children: [
+        {
+          name: 'home',
+          path: '/home',
+          component: ArticleList
+        },
+        {
+          name: 'article',
+          path: '/article',
+          component: ArticleContent
+        }
+      ]
     },
     {
       path: '/about',
